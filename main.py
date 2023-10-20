@@ -432,7 +432,7 @@ def main(args):
                 checkpoint_dict["scaler"] = scaler.state_dict()
 
             # only save the last epoch to save server storage
-            if args.world_size > 1 and completed_epoch == args.epochs:
+            if args.world_size >= 1 and completed_epoch == args.epochs:
                 torch.save(
                     checkpoint_dict,
                     os.path.join(args.checkpoint_path, f"epoch_latest.pt"),
